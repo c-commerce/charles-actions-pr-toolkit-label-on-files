@@ -1,8 +1,14 @@
 name: 'Wait'
 description: 'Wait a designated number of milliseconds'
 inputs:
-  labels:  # id of input
+  labels:
     description: 'comma separated labels'
+    required: false
+  files_modified:
+    description: 'only labels if at least one file for this glob was modified'
+    required: false
+  files_deleted:
+    description: 'only labels if at least one file for this glob was deleted'
     required: false
 outputs:
   status: # output will be available to future steps

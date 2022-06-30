@@ -86,15 +86,15 @@ git add dist
 
 Users shouldn't consume the action from master since that would be latest code and actions can break compatibility between major versions.
 
-Checkin to the v1 release branch
+Checkin to the v2 release branch
 
 ```bash
-git checkout -b v1
-git commit -a -m "v1 release"
+git checkout -b v2
+git commit -a -m "v2 release"
 ```
 
 ```bash
-git push origin v1
+git push origin v2
 ```
 
 Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
@@ -105,10 +105,10 @@ See the [versioning documentation](https://github.com/actions/toolkit/blob/maste
 
 ## Usage
 
-You can now consume the action by referencing the v1 branch
+You can now consume the action by referencing the v2 branch
 
 ```yaml
-uses: actions/javascript-action@v1
+uses: actions/javascript-action@v2
 with:
   milliseconds: 1000
 ```

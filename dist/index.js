@@ -17,7 +17,7 @@ module.exports = async function label (token, labels, globs) {
   const files = await github.getOctokit(token).rest.pulls.listFiles({
     repo: github.context.repo.repo,
     owner: github.context.repo.owner,
-    issue_number: github.context.payload.pull_request.number
+    pull_number: github.context.payload.pull_request.number
   })
 
   const _hasAtLeastFile = hasAtLeastFile(files.data, globs)

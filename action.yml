@@ -10,6 +10,9 @@ inputs:
   files_deleted:
     description: 'only labels if at least one file for this glob was deleted'
     required: false
+  token:
+    description: 'github token. If not specified, we will derive it from the environment, or send an error'
+    required: false
 outputs:
   status: # output will be available to future steps
     description: 'status of whether we took action'

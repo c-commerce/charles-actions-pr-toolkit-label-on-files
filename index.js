@@ -9,9 +9,24 @@ async function run () {
     return core.setOutput('status', 'skipped')
   }
 
+  const token = core.getInput('token') || process.env.GITHUB_TOKEN
+
+  if (!token) {
+    return core.setFailed('a github token is required but was not provided')
+  }
+
+  const globs = {
+    deleted: core.getInput('files_deleted'),
+    modified: core.getInput('files_modified')
+  }
+
   const labels = core.getInput('labels').split(',')
 
-  await doLabel(labels)
+  const result = await doLabel(token, labels, globs)
+
+  if (!result) {
+    return core.setOutput('status', 'skipped')
+  }
 
   core.setOutput('status', 'done')
 }

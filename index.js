@@ -9,7 +9,7 @@ async function run () {
     return core.setOutput('status', 'skipped')
   }
 
-  const token = core.getInput('token') ?? process.env.GITHUB_TOKEN
+  const token = core.getInput('token') || process.env.GITHUB_TOKEN
 
   if (!token) {
     return core.error('a github token is required but was not provided')

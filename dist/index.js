@@ -10,8 +10,8 @@ const github = __nccwpck_require__(5438)
  *
  * @param {String[]} labels
  */
-module.exports = async function label (labels) {
-  await github.getOctokit().rest.issues.addLabels({
+module.exports = async function label (token, labels) {
+  await github.getOctokit(token).rest.issues.addLabels({
     repo: github.context.repo.repo,
     owner: github.context.repo.owner,
     issue_number: github.context.payload.pull_request.number,
@@ -9247,9 +9247,15 @@ async function run () {
     return core.setOutput('status', 'skipped')
   }
 
+  const token = core.getInput('token') || process.env.GITHUB_TOKEN
+
+  if (!token) {
+    return core.error('a github token is required but was not provided')
+  }
+
   const labels = core.getInput('labels').split(',')
 
-  await doLabel(labels)
+  await doLabel(token, labels)
 
   core.setOutput('status', 'done')
 }

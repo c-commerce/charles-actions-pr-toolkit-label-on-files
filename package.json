@@ -1,7 +1,7 @@
 {
-  "name": "javascript-action",
+  "name": "charles-actions-pr-toolkit-label-on-files",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
+  "description": "PR Toolkit: label on file.",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",

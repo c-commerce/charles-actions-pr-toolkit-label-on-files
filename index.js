@@ -12,6 +12,8 @@ async function run () {
   const labels = core.getInput('labels').split(',')
 
   await doLabel(labels)
+
+  core.setOutput('status', 'done')
 }
 
 run()

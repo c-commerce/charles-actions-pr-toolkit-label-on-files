@@ -1,13 +1,12 @@
 name: 'Wait'
 description: 'Wait a designated number of milliseconds'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
-    required: true
-    default: '1000'
+  labels:  # id of input
+    description: 'comma separated labels'
+    required: false
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  status: # output will be available to future steps
+    description: 'status of whether we took action'
 runs:
   using: 'node16'
   main: 'dist/index.js'

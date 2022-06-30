@@ -1,5 +1,6 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
+const doLabel = require('./lib/label')
 
 // most @actions toolkit packages have async methods
 async function run () {
@@ -8,12 +9,9 @@ async function run () {
     return core.setOutput('status', 'skipped')
   }
 
-  await github.getOctokit().rest.issues.addLabels({
-    repo: github.context.repo.repo,
-    owner: github.context.repo.owner,
-    issue_number: github.context.payload.pull_request.number,
-    labels: ['hello-world']
-  })
+  const labels = core.getInput('labels').split(',')
+
+  await doLabel(labels)
 }
 
 run()
